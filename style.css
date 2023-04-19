@@ -77,7 +77,7 @@ input[type="text"] {
 button[type="submit"] {
   padding: 0.75rem;
   margin-left: 0.5rem;
-  background-color: #393053;
+  background-color: transparent;
   color: #F5F6FB;
   font-size: 1rem;
   cursor: pointer;
@@ -96,9 +96,9 @@ button[type="submit"]:hover {
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   padding: 2rem;
   border-radius: 15px;
-  background: #2a2f4f;
-  box-shadow: inset 29px 29px 58px #1f223a,
-            inset -29px -29px 58px #353c64;
+  background: #b13a4e;
+  box-shadow: inset 28px 28px 56px #7e2937,
+              inset -28px -28px 56px #e44b65;
 }
 
 #condition {
