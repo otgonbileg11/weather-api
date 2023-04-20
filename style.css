@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   justify-content: center;
   background: url(./public/city-image.jpg) no-repeat;
-  background-size:cover;
+  background-size:100vw 100vh;
 }
 
 header, main, footer {
