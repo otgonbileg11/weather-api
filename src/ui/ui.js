@@ -46,10 +46,9 @@ export function displayHistoryData(data) {
   let displayHistory = [];
   const keys = Object.keys(data);
   keys.forEach((key) => {
-    if (data.hasOwnProperty(key)) {
-      const dataObject = JSON.parse(data[key]);
-      displayHistory.push(
-        `<section class="weather-history">
+    const dataObject = JSON.parse(data[key]);
+    displayHistory.push(
+      `<section class="weather-history">
           <div>
             <h2>${dataObject.city}</h2>
             <p>${dataObject.country}</p>
@@ -61,8 +60,7 @@ export function displayHistoryData(data) {
             </div>
           <span id="temperature">${dataObject.temperature}&deg;C</span>
         </section>`,
-      );
-    }
+    );
   });
   displayHistory = displayHistory.join('');
   return displayHistory;
