@@ -1,9 +1,10 @@
-import weather from './components/api';
-import { deleteData, saveData } from './components/storage';
+import weatherapi from './api/api';
+import { deleteData, saveData } from './utils/storage';
 import {
-  showLoader, hideLoader, displayHistoryData, getAllData,
-} from './components/ui';
-import Weather from './components/weather';
+  showLoader, hideLoader, getAllData, displayHistoryData,
+} from './ui/ui';
+
+import Weather from './weather';
 
 const form = document.querySelector('.form');
 const cityName = document.querySelector('.city-name');
@@ -18,7 +19,7 @@ form.addEventListener('submit', async (e) => {
   const searchValue = document.querySelector('#search-input').value;
   const city = searchValue;
   try {
-    const data = await weather(city);
+    const data = await weatherapi(city);
     const current = data.current.temp_c;
     const { name } = data.location;
     const { country } = data.location;

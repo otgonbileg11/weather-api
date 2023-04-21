@@ -1,6 +1,6 @@
-import { showError, clearError } from './ui';
+import { showError, clearError } from '../ui/ui';
 
-function weather(params) {
+function weatherapi(params) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${params}&days=7&aqi=no`;
 
@@ -17,4 +17,4 @@ function weather(params) {
     });
 }
 
-export default weather;
+export default weatherapi;

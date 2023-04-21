@@ -45,7 +45,7 @@ export function getAllData() {
 export function displayHistoryData(data) {
   let displayHistory = [];
   const keys = Object.keys(data);
-  for (const key of keys) {
+  keys.forEach((key) => {
     if (data.hasOwnProperty(key)) {
       const dataObject = JSON.parse(data[key]);
       displayHistory.push(
@@ -63,7 +63,7 @@ export function displayHistoryData(data) {
         </section>`,
       );
     }
-  }
+  });
   displayHistory = displayHistory.join('');
   return displayHistory;
 }
