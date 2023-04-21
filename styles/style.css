@@ -12,7 +12,7 @@ body {
   min-width: 500px;
   flex-direction: column;
   justify-content: center;
-  background: url(./public/city-image.jpg) no-repeat;
+  background: url(../public/city-image.jpg) no-repeat;
   background-size:100vw 100vh;
 }
 

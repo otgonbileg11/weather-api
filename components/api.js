@@ -1,10 +1,7 @@
 import { showError, clearError } from "./ui";
 
-const apiKey = 'fa1a2c0611774f08b1524520231804';
-
-
-
 export const weather = (params) => {
+    const apiKey = import.meta.env.VITE_API_KEY;
     const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${params}&days=7&aqi=no`
     
     return fetch(apiUrl)
@@ -16,7 +13,7 @@ export const weather = (params) => {
             return response.json();
         })
         .catch(err => {
-            if (err.message === '400') {
+            if (err.message == '400') {
                 showError();
             }
             console.error(err);

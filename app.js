@@ -1,13 +1,13 @@
-import { weather } from "./api";
-import { deleteData, saveData } from "./storage";
-import { showLoader, hideLoader, displayHistoryData, getAllData } from "./ui";
-import Weather from "./weather";
+import { weather } from "./components/api";
+import { deleteData, saveData } from "./components/storage";
+import { showLoader, hideLoader, displayHistoryData, getAllData } from "./components/ui";
+import Weather from "./components/weather";
 
 const form = document.querySelector('.form');
 const cityName = document.querySelector('.city-name');
-const temp = document.querySelector('#temperature');
-const desc = document.querySelector('#weather-description');
-const img = document.querySelector('#weather-icon').firstElementChild;
+const temp = document.getElementById('temperature');
+const desc = document.getElementById('weather-description');
+const img = document.getElementById('weather-icon').firstElementChild;
 const history = document.querySelector('.history-container');
 
 form.addEventListener('submit',async function(e) {
@@ -20,7 +20,7 @@ form.addEventListener('submit',async function(e) {
         const current = data.current.temp_c;
         const name = data.location.name;
         const country = data.location.country;
-        const condition = data.current.condition.text;
+        const condition = data.current.condition.text ?? "normal";
         const date = data.location.localtime;
         const imgUrl = data.current.condition.icon;
         const weatherData = new Weather(name, country, date, current);
@@ -37,13 +37,12 @@ form.addEventListener('submit',async function(e) {
         if(storage) {
             history.classList.add('history-show');
         }
-        hideLoader();
     } catch (err) {
-        hideLoader();
         console.log(err);
+    } finally {
+        hideLoader();
     }
 });
-
 
 history.addEventListener('mouseover', (e) => {
     const btns = document.querySelectorAll('.delete');
@@ -51,7 +50,7 @@ history.addEventListener('mouseover', (e) => {
         btn.addEventListener('click', (e) => {
             const prev = e.currentTarget.parentElement.previousElementSibling;
             const key = prev.querySelector('h2').textContent.toLowerCase();
-            localStorage.removeItem(key);
+            deleteData(key);
             const storage = getAllData();
             history.innerHTML = displayHistoryData(storage);
         })
